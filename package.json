@@ -1,0 +1,23 @@
+{
+  "name": "blockdBoard",
+  "version": "1.0.0",
+  "description": "Virtual help board for eda",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vickenliu/blockdBoard.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/vickenliu/blockdBoard/issues"
+  },
+  "homepage": "https://github.com/vickenliu/blockdBoard#readme",
+  "dependencies": {
+    "knex": "^0.10.0"
+  }
+}

@@ -3,6 +3,10 @@ Virtual help board for eda
 
 
 #how to use
+first of all
+```js
+npm install
+```
 there are 2 servers supporting this app to run, for front-end server,
 
 ```js

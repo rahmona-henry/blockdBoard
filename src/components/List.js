@@ -26,7 +26,7 @@ class List extends Component{
             <div className="large-12 columns" data-id={id}>
                 <div className="row" id="individualIssue">
                     <div className="large-3 columns">
-                    <input name="your_name" value="your_value" type="checkbox" onChange={this.deleteList.bind(this)}/>
+                    <span>Solved?  </span><input name="your_name" value="your_value" type="checkbox" onChange={this.deleteList.bind(this)}/>
                       <h4 className="student-name">{name}</h4>
                       <b><p className="time">{datevalues[3]}:{datevalues[4]}:{datevalues[5]}</p></b>
                     </div>

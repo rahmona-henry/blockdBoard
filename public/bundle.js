@@ -31342,6 +31342,11 @@
 	          _react2.default.createElement(
 	            'div',
 	            { className: 'large-3 columns' },
+	            _react2.default.createElement(
+	              'span',
+	              null,
+	              'Solved?  '
+	            ),
 	            _react2.default.createElement('input', { name: 'your_name', value: 'your_value', type: 'checkbox', onChange: this.deleteList.bind(this) }),
 	            _react2.default.createElement(
 	              'h4',

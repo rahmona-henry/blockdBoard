@@ -1,4 +1,5 @@
-var knex = require('knex')( require('../knexfile')[process.env.NODE_ENV || 'development'])
+var knex = require('knex')
+// ( require('../knexfile')[process.env.NODE_ENV || 'development'])
 
 
 function selectAll(tableName){
@@ -16,10 +17,20 @@ function saveBlock(data){
     question: data.question,
     time: data.time
   })
+  .then(function(err){
+    if(err){
+      console.log(err)
+    }
+    else{
+      console.log("data saved")
+      return
+    }
+  })
 }
 
 
-selectAll('blocks')
 
-export default selectAll
-export saveBlock
+module.exports = {
+  selectAll: selectAll,
+  saveBlock: saveBlock
+}

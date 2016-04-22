@@ -1,4 +1,5 @@
-import selectAll from './db'
+var db = require('./db.js')
+
 
 var testData = {
   name: "george",
@@ -6,4 +7,5 @@ var testData = {
   time: "1200"
 }
 
-selectAll.saveBlock(testData)
+db.saveBlock(testData)
+db.selectAll('blocks')

@@ -15,10 +15,11 @@ class App extends Component{
         <div>
           <div className="row">
             <div className="large-6 columns"
-              <label>
-                What is your issue (optional)?
-                <textarea placeholder="None"></textarea>
-              </label>
+              <form className="form" action="/" method="post" >
+                <label>What is your issue (optional)?</label>
+                  <textarea name="issue"></textarea>
+                  <input type="submit" name="add" value="Submit" />
+              </form>
             </div>
           </div>
         </div>

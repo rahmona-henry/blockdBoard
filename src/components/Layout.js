@@ -16,18 +16,21 @@ export default class Layout extends Component{
       url:'http://localhost:3000/',
       method:'GET',
       success:(data)=>{
-        console.log('data from server',data)
         this.setState({todos: data})
       }
     })
   }
+  refreshTodo(){
+    this.getTodos()
+  }
+
   componentDidMount(){
     this.getTodos()
   }
   render(){
     return (
       <div className="row">
-        <Form />
+        <Form refreshTodo={this.refreshTodo.bind(this)}/>
         <Lists todos={this.state.todos} />
       </div>
     )

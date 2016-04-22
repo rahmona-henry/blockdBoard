@@ -6,7 +6,9 @@ class Lists extends Component{
   render(){
     const {todos}= this.props
     const Todos= todos.map((todo)=>{
-      return <List todo={todo} key={todo.id}/>;
+      if(todo.name){
+        return <List todo={todo} key={todo.id}/>;
+      }
     })
     return(
             <div className="large-6 columns" id="issueBox">

@@ -4,22 +4,23 @@ import request from 'superagent'
 class Form extends Component{
 
   postData(e){
-    //e.preventDefault();
+    e.preventDefault()
     request
       .post('http://localhost:3000/')
-      .send({ name: $("input[name='name']").val(), question: $("textarea[name='question']").val() })
-
+      .send({ name: $("input[name='name']").val(), question: $("textarea[name='question']").val(),time:Date.now() })
+      .end()
+    this.props.refreshTodo()
     }
 
   render(){
     return(
-            <div className="large-6 columns" action="http://localhost:3000/" method="post" type="multipart/form-data">
+            <div className="large-6 columns">
               <form className="form">
               <label>Name</label>
               <input type='text' name='name'/>
                 <label>What is your issue (optional)?</label>
                   <textarea name="question"></textarea>
-                  <input type="submit" name="add" value="Submit" id='submit'  />
+                  <button onClick={this.postData.bind(this)} class="button">Submit</button>
               </form>
             </div>
       )

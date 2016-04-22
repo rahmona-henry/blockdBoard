@@ -29,6 +29,8 @@ server.route({
     }
 });
 
+
+
 server.start((err) => {
 
     if (err) {
@@ -40,12 +42,14 @@ server.start((err) => {
 
 
 function selectAll(tableName,callback){
-  knex.select().table(tableName)
+  knex.select().table(tableName).orderBy('time', 'desc')
   .then(function(data){
     console.log(data)
     callback(data)
   })
 }
+
+
 
 
 function saveBlock(data){

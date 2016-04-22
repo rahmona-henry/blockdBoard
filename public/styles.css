@@ -10,3 +10,7 @@
 .student-issue {
 	padding-top: 30px;
 }
+
+textarea{
+	height: 25vh;
+}

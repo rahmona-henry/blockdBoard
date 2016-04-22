@@ -1,6 +1,7 @@
 import React,{Component} from 'react'
 import Form from './Form'
 import Lists from './Lists'
+import Header from './Header'
 import $ from 'jquery'
 
 export default class Layout extends Component{
@@ -30,6 +31,7 @@ export default class Layout extends Component{
   render(){
     return (
       <div className="row">
+        <Header/>
         <Form refreshTodo={this.refreshTodo.bind(this)}/>
         <Lists todos={this.state.todos} />
       </div>

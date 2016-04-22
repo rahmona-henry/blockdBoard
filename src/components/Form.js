@@ -4,12 +4,14 @@ import request from 'superagent'
 class Form extends Component{
 
   postData(e){
-    e.preventDefault()
+    e.preventDefault() // stop the form to submit, cuz i dont want the page to refresh
+    // post the user input to server
     request
       .post('http://localhost:3000/')
       .send({ name: $("input[name='name']").val(), question: $("textarea[name='question']").val(),time:Date.now() })
       .end()
-    this.props.refreshTodo()
+    this.props.refreshTodo()  // tell react to grab the latest todos lists from server
+    $('input,textarea').val(' ') // clear the input area
     }
 
   render(){

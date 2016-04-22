@@ -1,8 +1,11 @@
 module.exports = {
-    entry: "./src/client.js",
+    entry: {
+      bundle: "./src/client.js",
+      index: "./public/front.js"
+    },
     output: {
         path: 'public',
-        filename: "bundle.js"
+        filename: "[name].js"
     },
     module: {
         loaders: [

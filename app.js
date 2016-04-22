@@ -1,14 +1,14 @@
 'use strict';
 var knex = require('knex')( require('./knexfile')[process.env.NODE_ENV || 'development'])
 const Hapi = require('hapi');
+var Path = require('path')
 // var selectAll = require('./db/db')
-
+var Inert = require('inert')
 const server = new Hapi.Server();
 server.connection({
 	port: process.env.PORT || 3000,
 	routes: { cors: true }
 });
-
 server.route({
     method: 'GET',
     path: '/',
@@ -23,8 +23,8 @@ server.route({
     method: 'POST',
     path: '/',
     handler: function (request, reply) {
-        console.log(request.query, "this is request.body")
-        saveBlock(request.query)
+        console.log(request.payload, "this is request.body")
+        saveBlock(request.payload)
         reply();
     }
 });

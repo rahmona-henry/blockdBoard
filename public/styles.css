@@ -1,0 +1,16 @@
+#issueBox {
+}
+
+#individualIssue {
+	margin-top: 10px;
+	background-color: #2ecc71;
+
+}
+
+.student-issue {
+	padding-top: 30px;
+}
+
+textarea{
+	height: 25vh;
+}

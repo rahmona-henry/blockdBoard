@@ -1,21 +1,21 @@
 module.exports = {
-    entry: "./src/client.js",
+    entry: {
+      bundle: "./src/client.js",
+      index: "./public/front.js"
+    },
     output: {
         path: 'public',
-        filename: "bundle.js"
+        filename: "[name].js"
     },
     module: {
         loaders: [
-            {
-                test: /\.scss$/,
-                loaders: ["style", "css", "sass"]
-            },
             {
                 test: /.jsx?$/,
                 loader: 'babel-loader',
                 exclude: /node_modules/,
                 query: {
-                  presets: ['es2015','react']
+                  presets: ['es2015','react'],
+                  plugins: ['react-html-attrs', 'transform-class-properties', 'transform-decorators-legacy']
             }
           }
         ]

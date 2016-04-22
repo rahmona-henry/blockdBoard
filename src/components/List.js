@@ -1,29 +1,21 @@
 import React, {Component} from 'react'
 
-class App extends Component{
-  constructor(props){
-    super(props)
-    this.state = {count: 0}
-  } 
-
-  incrementCount(){
-    this.setState({count: this.state.count +1})
-  }
+class List extends Component{
 
   render(){
+    let {name,issue,time}= this.props.todo
     return(
         <div>
           <div className="row">
             <div className="large-6 columns">
-                <img className="student-picure" src="">
-                <p className="student-name">
-                <p className="student-issue">
-                <p className="time">
+                <p className="student-name">{name}</p>
+                <p className="student-issue">{issue}</p>
+                <p className="time">{time}</p>
             </div>
           </div>
         </div>
-      ) 
+      )
   }
 }
 
-export default App
+export default List

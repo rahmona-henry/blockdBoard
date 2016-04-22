@@ -1,26 +1,19 @@
 import React, {Component} from 'react'
+import List from './List'
 
-class App extends Component{
-  constructor(props){
-    super(props)
-    this.state = {count: 0}
-  } 
-
-  incrementCount(){
-    this.setState({count: this.state.count +1})
-  }
+class Lists extends Component{
 
   render(){
+    const {todos}= this.props
+    const Todos= todos.map((todo)=>{
+      return <List todo={todo} key={todo.id}/>;
+    })
     return(
-        <div>
-          <div className="row">
             <div className="large-6 columns">
-
+              <div>{Todos}</div>
             </div>
-          </div>
-        </div>
-      ) 
+      )
   }
 }
 
-export default App
+export default Lists

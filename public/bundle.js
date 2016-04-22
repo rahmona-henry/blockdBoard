@@ -29764,28 +29764,24 @@
 
 	      return _react2.default.createElement(
 	        "div",
-	        null,
+	        { className: "row" },
 	        _react2.default.createElement(
 	          "div",
-	          { className: "row" },
+	          { className: "large-6 columns" },
 	          _react2.default.createElement(
-	            "div",
-	            { className: "large-6 columns" },
-	            _react2.default.createElement(
-	              "p",
-	              { className: "student-name" },
-	              name
-	            ),
-	            _react2.default.createElement(
-	              "p",
-	              { className: "student-issue" },
-	              issue
-	            ),
-	            _react2.default.createElement(
-	              "p",
-	              { className: "time" },
-	              time
-	            )
+	            "p",
+	            { className: "student-name" },
+	            name
+	          ),
+	          _react2.default.createElement(
+	            "p",
+	            { className: "student-issue" },
+	            issue
+	          ),
+	          _react2.default.createElement(
+	            "p",
+	            { className: "time" },
+	            time
 	          )
 	        )
 	      );

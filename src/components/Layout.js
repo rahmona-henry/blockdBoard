@@ -8,8 +8,8 @@ export default class Layout extends Component{
     super()
     this.state={
       todos:[{id:1,name:'vicken',issue:'i am blocked',time:'2016'},
-      {id:2,name:'Gorge',issue:'i am blocked too',time:'2017'}]
-    }
+        {id:2,name:'Gorge',issue:'i am blocked too',time:'2017'}]
+      }
   }
   // getTodos(){
   //   $.data({
@@ -26,7 +26,7 @@ export default class Layout extends Component{
   render(){
     return (
       <div className="row">
-        <Form/>
+        <Form />
         <Lists todos={this.state.todos} />
       </div>
     )

@@ -5,7 +5,6 @@ class List extends Component{
   render(){
     let {name,issue,time}= this.props.todo
     return(
-        <div>
           <div className="row">
             <div className="large-6 columns">
                 <p className="student-name">{name}</p>
@@ -13,7 +12,6 @@ class List extends Component{
                 <p className="time">{time}</p>
             </div>
           </div>
-        </div>
       )
   }
 }

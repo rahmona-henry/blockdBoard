@@ -9,7 +9,7 @@ class Lists extends Component{
       return <List todo={todo} key={todo.id}/>;
     })
     return(
-            <div className="large-6 columns">
+            <div className="large-6 columns" id="issueBox">
               <div>{Todos}</div>
             </div>
       )

@@ -20,3 +20,6 @@ function saveBlock(data){
 
 
 selectAll('blocks')
+
+export default selectAll
+export saveBlock

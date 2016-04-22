@@ -7,22 +7,23 @@ export default class Layout extends Component{
   constructor(){
     super()
     this.state={
-      todos:[{id:1,name:'vicken',issue:'i am blocked',time:'2016'},
-        {id:2,name:'Gorge',issue:'i am blocked too',time:'2017'}]
+      todos:[{id:1,name:'vicken',question:'i am blocked',time:'2016'},
+        {id:2,name:'Gorge',question:'i am blocked too',time:'2017'}]
       }
   }
-  // getTodos(){
-  //   $.data({
-  //     url:'/',
-  //     method:'get',
-  //     success:(data)=>{
-  //       this.setState({todos:data})
-  //     }
-  //   })
-  // }
-  // componentDidMount(){
-  //   this.getTodos()
-  // }
+  getTodos(){
+    $.ajax({
+      url:'http://localhost:3000/',
+      method:'GET',
+      success:(data)=>{
+        console.log('data from server',data)
+        this.setState({todos: data})
+      }
+    })
+  }
+  componentDidMount(){
+    this.getTodos()
+  }
   render(){
     return (
       <div className="row">

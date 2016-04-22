@@ -4,13 +4,18 @@ const Hapi = require('hapi');
 // var selectAll = require('./db/db')
 
 const server = new Hapi.Server();
-server.connection({ port: 3000 });
+server.connection({
+	port: process.env.PORT || 3000,
+	routes: { cors: true }
+});
 
 server.route({
     method: 'GET',
     path: '/',
     handler: function (request, reply) {
-        reply(selectAll('blocks'));
+        selectAll('blocks',function(data){
+					reply(data)
+				});
     }
 });
 
@@ -34,11 +39,11 @@ server.start((err) => {
 
 
 
-function selectAll(tableName){
+function selectAll(tableName,callback){
   knex.select().table(tableName)
   .then(function(data){
     console.log(data)
-    return data
+    callback(data)
   })
 }
 

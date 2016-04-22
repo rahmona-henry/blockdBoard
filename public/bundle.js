@@ -19711,25 +19711,31 @@
 	    var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(Layout).call(this));
 
 	    _this.state = {
-	      todos: [{ id: 1, name: 'vicken', issue: 'i am blocked', time: '2016' }, { id: 2, name: 'Gorge', issue: 'i am blocked too', time: '2017' }]
+	      todos: [{ id: 1, name: 'vicken', question: 'i am blocked', time: '2016' }, { id: 2, name: 'Gorge', question: 'i am blocked too', time: '2017' }]
 	    };
 	    return _this;
 	  }
-	  // getTodos(){
-	  //   $.data({
-	  //     url:'/',
-	  //     method:'get',
-	  //     success:(data)=>{
-	  //       this.setState({todos:data})
-	  //     }
-	  //   })
-	  // }
-	  // componentDidMount(){
-	  //   this.getTodos()
-	  // }
-
 
 	  _createClass(Layout, [{
+	    key: 'getTodos',
+	    value: function getTodos() {
+	      var _this2 = this;
+
+	      _jquery2.default.ajax({
+	        url: 'http://localhost:3000/',
+	        method: 'GET',
+	        success: function success(data) {
+	          console.log('data from server', data);
+	          _this2.setState({ todos: data });
+	        }
+	      });
+	    }
+	  }, {
+	    key: 'componentDidMount',
+	    value: function componentDidMount() {
+	      this.getTodos();
+	    }
+	  }, {
 	    key: 'render',
 	    value: function render() {
 	      return _react2.default.createElement(
@@ -29759,7 +29765,7 @@
 	    value: function render() {
 	      var _props$todo = this.props.todo;
 	      var name = _props$todo.name;
-	      var issue = _props$todo.issue;
+	      var question = _props$todo.question;
 	      var time = _props$todo.time;
 
 	      return _react2.default.createElement(
@@ -29776,7 +29782,7 @@
 	          _react2.default.createElement(
 	            "p",
 	            { className: "student-issue" },
-	            issue
+	            question
 	          ),
 	          _react2.default.createElement(
 	            "p",

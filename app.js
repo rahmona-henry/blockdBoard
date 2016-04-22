@@ -23,8 +23,16 @@ server.route({
     method: 'POST',
     path: '/',
     handler: function (request, reply) {
-        console.log(request.payload, "this is request.body")
         saveBlock(request.payload)
+        reply();
+    }
+});
+
+server.route({
+    method: 'DELETE',
+    path: '/{id}',
+    handler: function (request, reply) {
+        deleteBlock('blocks',request.params.id)
         reply();
     }
 });
@@ -49,6 +57,12 @@ function selectAll(tableName,callback){
   })
 }
 
+function deleteBlock(tableName,id){
+  knex(tableName).where('id',id).del()
+  .then(function(){
+    console.log('data has been delete')
+  })
+}
 
 
 

@@ -19751,7 +19751,7 @@
 	        { className: 'row' },
 	        _react2.default.createElement(_Header2.default, null),
 	        _react2.default.createElement(_Form2.default, { refreshTodo: this.refreshTodo.bind(this) }),
-	        _react2.default.createElement(_Lists2.default, { todos: this.state.todos })
+	        _react2.default.createElement(_Lists2.default, { todos: this.state.todos, refreshTodo: this.refreshTodo.bind(this) })
 	      );
 	    }
 	  }]);
@@ -31245,11 +31245,13 @@
 	  _createClass(Lists, [{
 	    key: 'render',
 	    value: function render() {
+	      var _this2 = this;
+
 	      var todos = this.props.todos;
 
 	      var Todos = todos.map(function (todo) {
 	        if (todo.name) {
-	          return _react2.default.createElement(_List2.default, { todo: todo, key: todo.id });
+	          return _react2.default.createElement(_List2.default, { todo: todo, key: todo.id, refreshTodo: _this2.props.refreshTodo });
 	        }
 	      });
 	      return _react2.default.createElement(
@@ -31273,7 +31275,7 @@
 /* 169 */
 /***/ function(module, exports, __webpack_require__) {
 
-	"use strict";
+	'use strict';
 
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
@@ -31284,6 +31286,14 @@
 	var _react = __webpack_require__(1);
 
 	var _react2 = _interopRequireDefault(_react);
+
+	var _superagent = __webpack_require__(162);
+
+	var _superagent2 = _interopRequireDefault(_superagent);
+
+	var _jquery = __webpack_require__(161);
+
+	var _jquery2 = _interopRequireDefault(_jquery);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -31303,57 +31313,61 @@
 	  }
 
 	  _createClass(List, [{
-	    key: "render",
+	    key: 'deleteList',
+	    value: function deleteList(e) {
+	      var _this2 = this;
 
-	    // deleteList(){
-	    //   //post rest to server to delete this one
-	    //   request
-	    //     .post('http://localhost:3000/'+id)
-	    //     .end()
-	    // }
+	      var id = (0, _jquery2.default)(e.target).closest('.large-12').data('id');
+	      _superagent2.default.delete('http://localhost:3000/' + id).end(function () {
+	        _this2.props.refreshTodo();
+	      });
+	    }
+	  }, {
+	    key: 'render',
 	    value: function render() {
 	      var _props$todo = this.props.todo;
 	      var name = _props$todo.name;
 	      var question = _props$todo.question;
 	      var time = _props$todo.time;
+	      var id = _props$todo.id;
 
 	      var date = new Date(time * 1000),
 	          datevalues = [date.getFullYear(), date.getMonth() + 1, date.getDate(), date.getHours(), date.getMinutes(), date.getSeconds()];
 	      return _react2.default.createElement(
-	        "div",
-	        { className: "large-12 columns" },
+	        'div',
+	        { className: 'large-12 columns', 'data-id': id },
 	        _react2.default.createElement(
-	          "div",
-	          { className: "row", id: "individualIssue" },
+	          'div',
+	          { className: 'row', id: 'individualIssue' },
 	          _react2.default.createElement(
-	            "div",
-	            { className: "large-3 columns" },
-	            _react2.default.createElement("input", { name: "your_name", value: "your_value", type: "checkbox" }),
+	            'div',
+	            { className: 'large-3 columns' },
+	            _react2.default.createElement('input', { name: 'your_name', value: 'your_value', type: 'checkbox', onChange: this.deleteList.bind(this) }),
 	            _react2.default.createElement(
-	              "h4",
-	              { className: "student-name" },
+	              'h4',
+	              { className: 'student-name' },
 	              name
 	            ),
 	            _react2.default.createElement(
-	              "b",
+	              'b',
 	              null,
 	              _react2.default.createElement(
-	                "p",
-	                { className: "time" },
+	                'p',
+	                { className: 'time' },
 	                datevalues[3],
-	                ":",
+	                ':',
 	                datevalues[4],
-	                ":",
+	                ':',
 	                datevalues[5]
 	              )
 	            )
 	          ),
 	          _react2.default.createElement(
-	            "div",
-	            { className: "large-9 columns" },
+	            'div',
+	            { className: 'large-9 columns' },
 	            _react2.default.createElement(
-	              "p",
-	              { className: "student-issue" },
+	              'p',
+	              { className: 'student-issue' },
 	              question
 	            )
 	          )

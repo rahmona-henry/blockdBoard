@@ -33,7 +33,7 @@ export default class Layout extends Component{
       <div className="row">
         <Header/>
         <Form refreshTodo={this.refreshTodo.bind(this)}/>
-        <Lists todos={this.state.todos} />
+        <Lists todos={this.state.todos} refreshTodo={this.refreshTodo.bind(this)}/>
       </div>
     )
   }

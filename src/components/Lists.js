@@ -7,7 +7,7 @@ class Lists extends Component{
     const {todos}= this.props
     const Todos= todos.map((todo)=>{
       if(todo.name){
-        return <List todo={todo} key={todo.id}/>;
+        return <List todo={todo} key={todo.id} refreshTodo={this.props.refreshTodo}/>;
       }
     })
     return(

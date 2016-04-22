@@ -1,14 +1,18 @@
 import React, {Component} from 'react'
-
+import request from 'superagent'
+import $ from 'jquery'
 class List extends Component{
-  // deleteList(){
-  //   //post rest to server to delete this one
-  //   request
-  //     .post('http://localhost:3000/'+id)
-  //     .end()
-  // }
+  deleteList(e){
+    let id=$(e.target).closest('.large-12').data('id')
+    request
+      .delete('http://localhost:3000/'+id)
+      .end(()=>{
+        this.props.refreshTodo()
+      })
+
+  }
   render(){
-    let {name,question,time}= this.props.todo
+    let {name,question,time,id}= this.props.todo
           var date = new Date(time * 1000),
           datevalues = [
              date.getFullYear(),
@@ -19,10 +23,10 @@ class List extends Component{
              date.getSeconds(),
           ];
     return(
-            <div className="large-12 columns">
+            <div className="large-12 columns" data-id={id}>
                 <div className="row" id="individualIssue">
                     <div className="large-3 columns">
-                    <input name="your_name" value="your_value" type="checkbox" />
+                    <input name="your_name" value="your_value" type="checkbox" onChange={this.deleteList.bind(this)}/>
                       <h4 className="student-name">{name}</h4>
                       <b><p className="time">{datevalues[3]}:{datevalues[4]}:{datevalues[5]}</p></b>
                     </div>
